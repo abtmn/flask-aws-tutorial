@@ -22,7 +22,8 @@ application.secret_key = 'cC1YCIWOj9GgWspgNEo2'
 @application.route('/index', methods=['GET', 'POST'])
 def index():
     form1 = EnterDBInfo(request.form) 
-    form2 = RetrieveDBInfo(request.form) 
+    form2 = RetrieveDBInfo(request.form)
+    form3 = RetrieveDBInfo2(request.form) 
     
     if request.method == 'POST' and form1.validate():
         data_entered = Data(notes=form1.dbNotes.data)
@@ -37,6 +38,13 @@ def index():
     if request.method == 'POST' and form2.validate():
         try:   
             num_return = int(form2.numRetrieve.data)
+            query_db = Data.query.order_by(Data.id.desc()).limit(num_return)
+            for q in query_db:
+                print(q.notes)
+            db.session.close()
+    if request.method == 'POST' and form3.validate():
+        try:   
+            num_return = int(form3.numRetrieve.data)
             query_db = Data.query.order_by(Data.id.desc()).limit(num_return)
             for q in query_db:
                 print(q.notes)
