@@ -37,14 +37,14 @@ def index():
         return render_template('thanks.html', notes=form1.dbNotes.data)
 
     if request.method == 'POST' and addLoanerName.validate():
-        data_entered = Loaners(name=addLoanerName.dbNotes2.data)
+        data_entered = Loaners(name=addLoanerName.dbLN.data)
         try:     
             db.session.add(data_entered)
             db.session.commit()        
             db.session.close()
         except:
             db.session.rollback()
-        return render_template('thanks.html', name=addLoanerName.dbNotes2.data)
+        return render_template('thanks.html', name=addLoanerName.dbLN.data)
         
     if request.method == 'POST' and form2.validate():
         try:   
