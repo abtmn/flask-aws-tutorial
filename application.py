@@ -10,7 +10,7 @@ Step-by-step tutorial: https://medium.com/@rodkey/deploying-a-flask-application-
 from flask import Flask, render_template, request
 from application import db
 from application.models import Data, Loaners
-from application.forms import EnterDBInfo, RetrieveDBInfo
+from application.forms import EnterDBInfo, RetrieveDBInfo, EnterLoanerName
 
 # Elastic Beanstalk initalization
 application = Flask(__name__)
@@ -22,7 +22,7 @@ application.secret_key = 'cC1YCIWOj9GgWspgNEo2'
 @application.route('/index', methods=['GET', 'POST'])
 def index():
     form1 = EnterDBInfo(request.form) 
-    addLoanerName = EnterDBInfo(request.form) 
+    addLoanerName = EnterLoanerName(request.form) 
     form2 = RetrieveDBInfo(request.form)
     form3 = RetrieveDBInfo(request.form) 
     
