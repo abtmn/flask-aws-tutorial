@@ -36,8 +36,8 @@ def index():
             db.session.rollback()
         return render_template('thanks.html', notes=form1.dbNotes.data)
 
-    if request.method == 'POST' and addLoanerName.validate():
-        data_entered = Loaners(name=addLoanerName.dbNotes.Loaners)
+    if request.method == 'postLN' and addLoanerName.validate():
+        data_entered = Loaners(name=addLoanerName.dbNotes.data)
         try:     
             db.session.add(data_entered)
             db.session.commit()        
