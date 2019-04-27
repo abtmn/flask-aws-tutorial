@@ -22,6 +22,7 @@ application.secret_key = 'cC1YCIWOj9GgWspgNEo2'
 @application.route('/index', methods=['GET', 'POST'])
 def index():
     form1 = EnterDBInfo(request.form) 
+    addClienName = EnterDBInfo(request.form) 
     form2 = RetrieveDBInfo(request.form)
     form3 = RetrieveDBInfo(request.form) 
     
@@ -34,6 +35,16 @@ def index():
         except:
             db.session.rollback()
         return render_template('thanks.html', notes=form1.dbNotes.data)
+
+    if request.method == 'POST' and addClienName.validate():
+        data_entered = loaners(name=addClienName.dbNotes.data)
+        try:     
+            db.session.add(data_entered)
+            db.session.commit()        
+            db.session.close()
+        except:
+            db.session.rollback()
+        return render_template('thanks.html', name=addClienName.dbNotes.data)
         
     if request.method == 'POST' and form2.validate():
         try:   
