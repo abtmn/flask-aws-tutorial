@@ -44,7 +44,7 @@ def index():
             db.session.close()
         except:
             db.session.rollback()
-        return render_template('thanks.html', name=addLoanerName.dbNotes2.loaners)
+        return render_template('thanks.html', name=addLoanerName.dbNotes2.data)
         
     if request.method == 'POST' and form2.validate():
         try:   
