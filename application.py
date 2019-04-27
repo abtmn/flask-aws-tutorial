@@ -67,7 +67,7 @@ def index():
             db.session.rollback()
         return render_template('results.html', results=query_db, num_return=num_return)                
     
-    return render_template('index.html', form1=form1, form2=form2, form3=form3)
+    return render_template('index.html', form1=form1, form2=form2, form3=form3, addClienName=addClienName)
 
 if __name__ == '__main__':
     application.run(host='0.0.0.0')
