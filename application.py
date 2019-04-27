@@ -22,7 +22,7 @@ application.secret_key = 'cC1YCIWOj9GgWspgNEo2'
 @application.route('/index', methods=['GET', 'POST'])
 def index():
     form1 = EnterDBInfo(request.form) 
-    addClienName = EnterDBInfo(request.form) 
+    addClientName = EnterDBInfo(request.form) 
     form2 = RetrieveDBInfo(request.form)
     form3 = RetrieveDBInfo(request.form) 
     
@@ -36,15 +36,15 @@ def index():
             db.session.rollback()
         return render_template('thanks.html', notes=form1.dbNotes.data)
 
-    if request.method == 'POST' and addClienName.validate():
-        data_entered = loaners(name=addClienName.dbNotes.data)
+    if request.method == 'POST' and addClientName.validate():
+        data_entered = loaners(name=addClientName.dbNotes.data)
         try:     
             db.session.add(data_entered)
             db.session.commit()        
             db.session.close()
         except:
             db.session.rollback()
-        return render_template('thanks.html', name=addClienName.dbNotes.data)
+        return render_template('thanks.html', name=addClientName.dbNotes.data)
         
     if request.method == 'POST' and form2.validate():
         try:   
@@ -67,7 +67,7 @@ def index():
             db.session.rollback()
         return render_template('results.html', results=query_db, num_return=num_return)                
     
-    return render_template('index.html', form1=form1, form2=form2, form3=form3, addClienName=addClienName)
+    return render_template('index.html', form1=form1, form2=form2, form3=form3, addClientName=addClientName)
 
 if __name__ == '__main__':
     application.run(host='0.0.0.0')
