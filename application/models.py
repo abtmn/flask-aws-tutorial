@@ -21,4 +21,4 @@ class Loaners(db.Model):
         self.name = name
 
     def __repr__(self):
-        return '<Data %r>' % self.id_loaner
+        return '<Data %r>' % self.name
