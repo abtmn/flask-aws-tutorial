@@ -19,6 +19,16 @@
 
 </form>   
 
+<form method="post" action="/index"  id="db_post" name="db_post">
+
+  {{ addClientName.hidden_tag() }} 
+  
+  {{ macros.render_field(addClientName.dbNotes, placeholder='Enter text to submit to the DB', type='dbNotes', label_visible=false) }}
+  
+  <div align="center"><button type="submit" class="btn btn-primary">Submit</button></p></div>
+
+</form>  
+
 <hr>
 
 <form method="post" action="/index"  id="db_post" name="db_view">
