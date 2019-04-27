@@ -42,6 +42,9 @@ def index():
             for q in query_db:
                 print(q.notes)
             db.session.close()
+        except:
+            db.session.rollback()
+        return render_template('results.html', results=query_db, num_return=num_return)
     if request.method == 'POST' and form3.validate():
         try:   
             num_return = int(form3.numRetrieve.data)
