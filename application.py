@@ -9,7 +9,7 @@ Step-by-step tutorial: https://medium.com/@rodkey/deploying-a-flask-application-
 
 from flask import Flask, render_template, request
 from application import db
-from application.models import Data
+from application.models import Data, Loaners
 from application.forms import EnterDBInfo, RetrieveDBInfo
 
 # Elastic Beanstalk initalization
@@ -37,7 +37,7 @@ def index():
         return render_template('thanks.html', notes=form1.dbNotes.data)
 
     if request.method == 'POST' and addLoanerName.validate():
-        data_entered = loaners(name=addLoanerName.dbNotes.data)
+        data_entered = Loaners(name=addLoanerName.dbNotes.data)
         try:     
             db.session.add(data_entered)
             db.session.commit()        

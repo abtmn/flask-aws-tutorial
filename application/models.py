@@ -17,22 +17,8 @@ class Loaners(db.Model):
     surname = db.Column(db.String(128), index=True, unique=False)
     
     
-    def __init__(self, id_loaner):
-        self.id_loaner = id_loaner
-
-    def __repr__(self):
-        return '<Data %r>' % self.id_loaner
-
-
     def __init__(self, name):
         self.name = name
 
     def __repr__(self):
-        return '<Data %r>' % self.name
-        
-
-    def __init__(self, surname):
-        self.surname = surname
-
-    def __repr__(self):
-        return '<Data %r>' % self.surname
+        return '<Data %r>' % self.id_loaner
