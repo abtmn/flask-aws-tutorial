@@ -23,7 +23,7 @@ application.secret_key = 'cC1YCIWOj9GgWspgNEo2'
 def index():
     form1 = EnterDBInfo(request.form) 
     form2 = RetrieveDBInfo(request.form)
-    form3 = RetrieveDBInfo2(request.form) 
+    form3 = RetrieveDBInfo(request.form) 
     
     if request.method == 'POST' and form1.validate():
         data_entered = Data(notes=form1.dbNotes.data)
