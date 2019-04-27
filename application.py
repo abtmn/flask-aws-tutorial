@@ -22,7 +22,7 @@ application.secret_key = 'cC1YCIWOj9GgWspgNEo2'
 @application.route('/index', methods=['GET', 'POST'])
 def index():
     form1 = EnterDBInfo(request.form) 
-    addLoanertName = EnterDBInfo(request.form) 
+    addLoanerName = EnterDBInfo(request.form) 
     form2 = RetrieveDBInfo(request.form)
     form3 = RetrieveDBInfo(request.form) 
     
